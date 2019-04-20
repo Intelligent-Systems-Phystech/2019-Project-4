@@ -4,3 +4,12 @@
 *.blg
 *.log
 *.bib.bak
+*.nav
+*.out
+*.snm
+*.toc
+*.out
+bigartm.*
+.ipynb_checkpoints
+*batches
+*.batch
