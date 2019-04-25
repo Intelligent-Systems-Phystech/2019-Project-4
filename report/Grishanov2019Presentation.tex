@@ -46,11 +46,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-	\frametitle{Цель работы}
+	\frametitle{Автоматизация настройки параметров BigARTM}
 
 \begin{block}{Проблема}
 
-Настройка параметров BigARTM требует работы аналитика (эксперта). Требуется автоматизировать этот процесс.
+Настройка параметров BigARTM требует работы эксперта. Требуется автоматизировать этот процесс.
 
 \end{block}
 
@@ -59,7 +59,7 @@
 \end{block}
 
 \begin{block}{Метод решения}
-	Предлагается использовать относительные коэффициенты регуляризации и автоматический подбор $n$-граммм.
+	Предлагается использовать относительные коэффициенты регуляризации.
 \end{block}
 
 \end{frame}
@@ -79,78 +79,109 @@
 %Регуляризатор разреживания, наоборот, отдаляет оценку максимального правдоподобия от заданного априорного распределения.
 %В случае, когда вектор сдвига слишком большой, оценка остается на границе симплекса благодаря операции положительной срезки, при этом некоторые компоненты распределения зануляются.
 
-\begin{figure}[h]
-	\subfloat[Сглаживание]{\includegraphics[scale=0.6]{img/rel_smooth.png}}
-	\subfloat[Разреживание]{\includegraphics[scale=0.6]{img/rel_sparse.png}}\\
-	%	\caption{Подпись должна размещаться под рисунком. }
-	\label{fg:Example}
-\end{figure}
+%\begin{figure}[h]
+%	\subfloat[Сглаживание]
+\begin{center}
+{\includegraphics[scale=0.75]{img/rel_smooth.pdf}}	
+\end{center}
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+%	\subfloat[Разреживание]{\includegraphics[scale=0.6]{img/rel_sparse.png}}\\
+%		\caption{Подпись должна размещаться под рисунком. }
+%	\label{fg:Example}
+%\end{figure}
 
 \end{frame}
 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{frame}
-%	\frametitle{Базовые алгоритмы}
-%	
-%\begin{enumerate}
-%
-%\item
-%Логистическая регрессия с $L_2$ регуляризацией
-%
-%\item
-%PLSA
-%
-%David M Blei, Andrew Y Ng, and Michael I Jordan. Latent dirichlet allocation. Journal of machine
-%Learning research, 2003.
+\begin{frame}
+	\frametitle{Литература}
+
+\begin{itemize}
+
+\item
+Описание подхода ARTM
+
+Konstantin Vorontsov, Anna Potapenko. Additive Regularization of Topic Models.
+
+\item Относительные коэффициенты регуляризации
+
+Дойков Н.В.
+Адаптивная регуляризация вероятностных тематических моделей. 
+
+\item
+Модель PLSA
+
+David M Blei, Andrew Y Ng, and Michael I Jordan. Latent dirichlet allocation. Journal of machine
+Learning research, 2003.
+
 %\item
 %LDA
+%
 %Thomas Hofmann. Probabilistic latent semantic analysis. In Proceedings of the Fifteenth Conference
 %on Uncertainty in Artificial Intelligence, UAI’99, pages 289–296, San Francisco, CA, USA, 1999.
-%\end{enumerate}
-%
-%\end{frame}
+\end{itemize}
+
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
-    \frametitle{Обозначения}
-\begin{itemize}
-\item $d \in D$ --- текстовые документы
-\item $w\in W$ --- слова
-\item $t\in T$~--- темы
-\end{itemize}
-
-%Согласно формуле полной вероятности и гипотезе условной независимости, распределение термов
-%в документе $p(w|d)$ описывается вероятностной смесью распределений термов в темах $\varphi_{wt} = p(w|t)$ с весами $\theta_{td} = p(t|d)$
-
-\begin{block}{Распределение термов в документах}
-	\begin{equation}\label{eq_0}
-	p(w|d) = \sum\limits_{t \in T} p(w|t) p(t|d) = \sum\limits_{t \in T}\varphi_{wt}\theta_{td}.
-	\end{equation}
-\end{block}
-
-
-%Вероятностная тематическая модель (ВТМ) описывает каждую тему дискретным распределением на множестве терминов $\phi_{wt} = p(w|t)$, каждый документ ---  дискретным распределением на множестве тем $\theta_{td} = p(t|d)$. Предполагается, что коллекция документов --- это последовательность терминов, выбранных случайно и независимо из смеси таких распределений, и ставится задача восстановления компонент смеси по выборке.
-\end{frame}
+%\begin{frame}
+%    \frametitle{Обозначения}
+%\begin{itemize}
+%\item $d \in D$ --- текстовые документы
+%\item $w\in W$ --- слова
+%\item $t\in T$~--- темы
+%\end{itemize}
+%
+%%\begin{block}{Распределение термов в документах}
+%\begin{block}{Распределение термов в документах}
+%	\begin{equation}\label{eq_0}
+%	p(w|d) = \sum\limits_{t \in T} p(w|t) p(t|d) = \sum\limits_{t \in T}\varphi_{wt}\theta_{td}.
+%	\end{equation}
+%\end{block}
+%
+%
+%%Вероятностная тематическая модель (ВТМ) описывает каждую тему дискретным распределением на множестве терминов $\phi_{wt} = p(w|t)$, каждый документ ---  дискретным распределением на множестве тем $\theta_{td} = p(t|d)$. Предполагается, что коллекция документов --- это последовательность терминов, выбранных случайно и независимо из смеси таких распределений, и ставится задача восстановления компонент смеси по выборке.
+%\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \begin{frame}
   \frametitle{Задача тематического моделирования}
+  
+$d \in D$ --- документы,
+$w\in W$ --- слова,
+$t\in T$~--- темы
 
-Ставится задача разложения матрицы $F$ в произведение двух матриц $\Phi$ и $\Theta$ меньшего размера
+%\begin{block}{Распределение термов в документах}
+%\begin{block}{}
+%	\begin{equation}\label{eq_0}
+$$	p(w|d) = \sum\limits_{t \in T} p(w|t) p(t|d) = \sum\limits_{t \in T}\varphi_{wt}\theta_{td}$$
+%	\end{equation}
+%\end{block}
 
-$$\includegraphics[scale=0.3]{img/phi_theta.png}$$
+
+Ставится задача $F \approx \Phi \Theta$
+
+$$\includegraphics[scale=0.26]{img/phi_theta.png}$$
 
 %\begin{itemize}
 %\item $\Phi = (\phi_{wt})_{W \times T}, \; \phi_{wt} = p(w|t)$ --- матрица <<термины-темы>>;
 %\item $\Theta = (\theta_{td})_{T \times D}, \; \theta_{td} = p(t|d)$ --- матрица <<темы-документы>>;
 %\end{itemize}
 
-
-Поставленная задача ($F \approx \Phi \Theta$) эквивалентна поиску матриц $\Phi$ и $\Theta$, максимизирующих следующий функционал:
-\begin{block}{Задача}
+Пришли к следующей модели:
+%Это эквивалентно поиску матриц $\Phi$ и $\Theta$, максимизирующих следующий функционал:
+\begin{block}{PLSA}
 \begin{equation}\label{eq_1}
  	L(\Phi, \Theta) = \sum_{d \in D} \sum_{w \in d} n_{dw} \sum_{t \in T} \phi_{wt} \theta_{td} \rightarrow \max_{\Phi, \Theta}
 \end{equation}
@@ -166,55 +197,69 @@ $$\includegraphics[scale=0.3]{img/phi_theta.png}$$
 
 Разложение матрицы $F$ в произведение матриц $\Phi$ и $\Theta$ не единственно. В частности, для любой невырожденной матрицы $S$ размера $TxT$ верно, что $F = (\Phi S)(S^{-1} \Theta)$.
 
-\begin{block}{Аддитивная регуляризация}
-	Тематическая модель аддитивной регуляризации (additive regularization of topic models, ARTM) получается при наложении на модель дополнительных требований (регуляризаторов).
-	\begin{equation}
+При наложении на модель дополнительных требований (регуляризаторов $R_i(\Phi, \Theta)$) получим:
+
+\begin{block}{Аддитивная регуляризация тематических моделей}
+    \begin{equation}
 	L(\Phi, \Theta) + \sum_{i=1}^{n} \tau_i R_i(\Phi, \Theta) \rightarrow \max_{\Phi, \Theta}
 	\end{equation}	
 \end{block}
-
-
-
-%Таким образом, из-за сложившейся неопределённости, невозможен поиск произвольного матричного разложения, нужно уточнять модель. Можно наложить дополнительные ограничения, что приведёт к сокращению произвольности выбора или же сделать некоторые предположения о вероятностном распределении коллекции. Рассматриваются следующие два подхода к решению проблемы:
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\begin{frame}
-%    \frametitle{Подходы к устранению неопределённости}
-%
-%\begin{block}{Аддитивная регуляризация}
-%Тематическая модель аддитивной регуляризации (additive regularization of topic models, ARTM) получается при наложении на модель дополнительных требований (регуляризаторов).
-%\begin{equation}
-%	L(\Phi, \Theta) + \sum_{i=1}^{n} \tau_i R_i(\Phi, \Theta) \rightarrow \max_{\Phi, \Theta}
-%\end{equation}	
-%\end{block}
-%
-%\end{frame}
+\begin{frame}
+    \frametitle{Переход от абсолютных $\tau$ к относительных}
+
+Формула M-шага, сглаживающего или разреживающего $\varphi_{wt}$:
+
+\begin{equation}
+\varphi_{wt} = \underset{w \in W}{\text{norm}} \left(n_{wt} + \tau \right), \ norm(x_t) = 
+\frac{\max\{x_t, 0\}}
+{\sum\limits_{s\in T}
+\max\{x_s, 0\}}
+\end{equation}
+
+
+%Интуитивный смысл этого преобразования прост: мы либо <<притягиваем>> Фи к равномерному распределению $\beta = \frac{1}{|W|}$, либо ”отталкиваем” её от него же (возможно, даже
+%зануляя при этом какие-то компоненты).
+
+Проведём репараметризацию.
+Пусть $\beta_w = \frac{1}{|W|}$ — равномерное распределение.
+%, а текущие значения $n_{wt}$ и $\tau \in \mathbb {R}$ таковы, что на этой итерации M-шага зануления компонент не происходит (то есть либо $\tau > 0$,
+%либо $\tau < 0$, но $n_{wt} + \tau > 0$).
+%Тогда операцию положительной обрезки можно проигнорировать:
+\begin{equation}
+\varphi_{wt} = \underset{w \in W}{\text{norm}} \left(n_{wt} + \tau \right) = \frac{n_{wt} + \tau}{\sum\limits_{w \in W} n_{wt} + \tau} = \frac{n_{wt} + \tau}{n_{t} + \tau |W|}
+\end{equation}
+
+Представим это в виде выпуклой комбинации  $\frac{n_{wt}}
+{n_t}$ и $\frac{1}{|W|}$.
+
+\begin{equation}
+\frac{n_{wt} + \tau}{n_{t} + \tau |W|} = (1 - \lambda)\frac{n_{wt}}{n_t} + \lambda \frac{1}{|W|} 
+\Rightarrow
+\tau = \frac{n_t\lambda}{(1 - \lambda)|W|}
+\end{equation}
+
+Значит, сглаживание Фи можно трактовать, как нахождение компромисса между $\varphi_{wt}$~=~$\frac{n_{wt}}
+{n_t}$ и $\varphi_{wt} = \frac{1}{|W|}$.
+
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\begin{frame}
-%    \frametitle{Библиотека тематического моделирования BigARTM }
-%BigARTM ("`Big"' --- от <<большие данные>>) - открытая кросс-платформенная распределённая библиотека тематического моделирования, основанная на идее аддитивной регуляризации. \textit{(Для более подробной информации стоит зайти на \href{http://bigartm.org}{\textbf{bigartm.org}})}.
-%\begin{itemize}
-%\item BigARTM не загружает текстовую коллекцию полностью в память, а разбивает её на фрагменты и всякий раз работает только с определённым числом из них.
-%\item Параллельно может обрабатываться несколько фрагментов коллекции. Также BigARTM даёт возможность распределить вычислительные процедуры по целому кластеру компьютеров.
-%\item BigARTM является Open source проектом, поэтому можно легко модифицировать исходный код и приспосабливать его под свои эксперименты.
-%\end{itemize}
-%
-%\end{frame}
-
-
 \begin{frame}
-\frametitle{Решение}
+\frametitle{Решение задачи}
 \begin{itemize}
 \item
 Рассмотрим набор датасетов $\left\{\mathfrak{D}_{ex}, \mathfrak{D}_{in}\right\}$, где  $\mathfrak{D}_{ex}$ имеют внешний критерий качества, а $\mathfrak{D}_{in}$~ --- только внутренние.
 
 \item
-Необходимо проверить гипотезу о том, что существуют общие коэффициенты регуляризации $\tau_{general}$, для которых метрики качества отличаются от лучших на том же датасете не более чем на 5\%.
+Необходимо проверить гипотезу о том, что существуют общие коэффициенты регуляризации $\tau_{general}$, которые {\bf не хуже} чем PLSA и {\bf лучше} PLSA по нескольким критериям.
+
+%для которых метрики качества отличаются от лучших на том же датасете не более чем на 5\%.
 
 \item
 Для каждого из первых найдём лучшие параметры, затем будем искать общие.
@@ -223,33 +268,62 @@ $$\includegraphics[scale=0.3]{img/phi_theta.png}$$
 
 \end{itemize}
 
-Критерий --- построить модель, которая {\bf не хуже} чем PLSA и {\bf лучше} PLSA по нескольким критериям.
+%Критерий --- построить модель, которая {\bf не хуже} чем PLSA ни по одному критерию и {\bf лучше} PLSA по нескольким критериям.
 
 \end{frame}
 
 \begin{frame}
 	\frametitle{Результаты эксперимента}
+Фиксируем следующие относительных коэффициеты:
 
-\begin{enumerate}
-\item {\bf 20news groups}
+декоррелирование --- 0.04; разреживание тем в документах~---~0.1; разреживание слов в темах --- 0.2
 
-Best f1\_score: 0.9155
+\centering
+\textbf{20news groups}
 
-General params f1\_score: 0.9148
+\begin{table}[]
+	\begin{tabular}{|c|lll|}
+		\hline
+		\multicolumn{1}{|l|}{}                                                         & \multicolumn{1}{l|}{perplexity} & \multicolumn{1}{l|}{$\Phi$ sparsity} & $\Theta$ sparsity \\ \hline
+		PLSA                                                                           & 2580                            & 0.882                                & 0.001             \\ \hline
+		\begin{tabular}[c]{@{}c@{}}BigARTM\\ (with relative regularizers)\end{tabular} & 2560                            & 0.900                                & 0.860             \\ \hline
+	\end{tabular}
+\end{table}
 
-\item {\bf Victorian Era}
+\bigskip
 
-Best f1\_score: 0.9777
+\centering
+\textbf{NIPS}
 
-General params f1\_score: 0.9777
+\begin{table}[]
+	\begin{tabular}{|c|lll|}
+		\hline
+		\multicolumn{1}{|l|}{}                                                         & \multicolumn{1}{l|}{perplexity} & \multicolumn{1}{l|}{$\Phi$ sparsity} & $\Theta$ sparsity \\ \hline
+		PLSA                                                                           & 1000                            & 0.800                                & 0.890             \\ \hline
+		\begin{tabular}[c]{@{}c@{}}BigARTM\\ (with relative regularizers)\end{tabular} & 995                             & 0.850                                & 0.920             \\ \hline
+	\end{tabular}
+\end{table}
 
-\item {\bf Toxic comments}
-
-Best f1\_score: 0.9539
-
-General params f1\_score: 0.9582
-
-\end{enumerate}	
+%\begin{enumerate}
+%\item {\bf 20news groups}
+%
+%Best f1\_score: 0.9155
+%
+%General params f1\_score: 0.9148
+%
+%\item {\bf Victorian Era}
+%
+%Best f1\_score: 0.9777
+%
+%General params f1\_score: 0.9777
+%
+%\item {\bf Toxic comments}
+%
+%Best f1\_score: 0.9539
+%
+%General params f1\_score: 0.9582
+%
+%\end{enumerate}	
 	
 \end{frame}
 
